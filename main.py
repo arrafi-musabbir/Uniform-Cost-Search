@@ -4,15 +4,10 @@ Created on Sat Oct 02 17:13:02 2020
 @author: ARRAFI
 '''
 
-import UCS_algo as UC
-import FileRead
+import UCS_algo as U
 
-f = \
- FileRead.FileRead('D:/github/Uniform-Cost-Search/Weighted graph(cities).txt')
+if __name__ == "__main__":
+    u = U.UCS(input("Text file path: "), 's', 'g')
+else:
+    print("Invalid Module")
 
-print()
-#w = f.readFile()
-
-u = UC.UCS(dic=f, start='s', goal='g')
-
-#u.ucs()

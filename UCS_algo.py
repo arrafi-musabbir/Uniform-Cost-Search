@@ -1,15 +1,20 @@
+import FileRead as F
+f = F.FileRead()
 
-class UCS:
 
-    def __init__(self, dic, start, goal):
-        self.dic = dic
+class UCS(F.FileRead):
+
+    def __init__(self, path, start, goal):
+        self.path = path
+        self.dic = f.readFile(self.path)
         self.start = start
         self.goal = goal
-        self.ucs()
+        self.getUCSsol()
 
     '''
-    priorityQueue method takes dictionary,queue,current cost and return a queue
-    that is sorted based on min priority as well as the current cost running
+    priorityQueue method takes dictionary,queue,current cost and return a
+    queue that is sorted based on min priority as well as the current cost
+    running
     '''
 
     def priorityQueue(self, d, que, cost):
@@ -28,10 +33,10 @@ class UCS:
                 for i in range(len(l)):
                     left = 2 * i + 1
                     right = 2 * i + 2
-                    if (left < len(l) and l[left] < l[i]):
+                    if ((left < len(l) and l[left] < l[i])):
                         l[left], l[i] = l[i], l[left]
                         minHeapify(l)
-                    if (right < len(l) and l[right] < l[i]):
+                    if ((right < len(l) and l[right] < l[i])):
                         l[right], l[i] = l[i], l[right]
                         minHeapify(l)
                 return l
@@ -61,7 +66,7 @@ class UCS:
             cost = values[0]
         return cost
 
-    def ucs(self):
+    def getUCSsol(self):
         print("Running Uniform Cost Search")
         d = self.dic
         start = self.start
@@ -79,9 +84,8 @@ class UCS:
                 visited.append(temp)
                 # path[temp] = cost
                 break
-            if visited.count(temp) == 0:  # checking if node has already been
-                                          # visited
-                if d[temp] is not None:
+            if visited.count(temp) == 0:  # checking if node has already
+                if d[temp] is not None:   # been visited
                     for i in d[temp]:
                         dtemp[i] = d[temp][i] + cost
                         que.append(i)
