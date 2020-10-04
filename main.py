@@ -7,8 +7,7 @@ Created on Sat Oct 02 17:13:02 2020
 import UCS_algo as UC
 import FileRead
 
-f = \
- FileRead.FileRead('D:/github/Uniform-Cost-Search/Weighted graph(cities).txt')
+f = FileRead.FileRead('D:/github/Uniform-Cost-Search/Weighted graph(cities).txt')
 
 print()
 #w = f.readFile()
